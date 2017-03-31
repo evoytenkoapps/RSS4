@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 /**
  * Created by evv on 31.03.2017.
+ * Пытаемся мегрировать на gtihub
  */
 
 public class DBContentProvider extends ContentProvider {
