@@ -2,7 +2,6 @@ package ru.evoytenkoapps.rss;
 
 
 import android.content.*;
-import android.database.*;
 import android.database.sqlite.*;
 import android.os.*;
 import android.util.*;
@@ -10,7 +9,6 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.xmlpull.v1.*;
-import ru.evoytenkoapps.rss.*;
 
 public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 {
@@ -19,7 +17,7 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 
     List lst = new ArrayList<String>();
     //String path = "/storage/emulated/0/AppProjects/RSS/app/src/main/java/ru/evoytenkoapps/rss/MyDB";
-      String path  = "MyDB.db";
+    String DB_NAME = "MyDB.db";
 
     private String LOG_TAG ="RSS_BD";
 
@@ -141,7 +139,7 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
             List<String> tmplst = new ArrayList<String>();
             tmplst.addAll(data);
             // создаем объект для создания и управления версиями БД
-            DBStore  dbHelper = new DBStore(MainActivity.sMainContext, path);
+            DBStore  dbHelper = new DBStore(MainActivity.sMainContext, DB_NAME);
             // создаем объект для данных
             ContentValues cv = new ContentValues();
 //
@@ -176,15 +174,8 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 
             // закрываем подключение к БД
             dbHelper.close();
+
             delegate.processFinish(tmplst);
         }
     }
-
-//
-//    List getResult(){
-//
-//        return lst;
-//    }
-
-
 }

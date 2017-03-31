@@ -1,6 +1,5 @@
 package ru.evoytenkoapps.rss;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -26,13 +24,15 @@ public class SecondActivity extends AppCompatActivity implements AsyncResponse
     List<String> myDataset = new ArrayList<String>();
     final static String EXTRA_NAME = "lstData";
 
-    //String path = "/storage/emulated/0/AppProjects/RSS/app/src/main/java/ru/evoytenkoapps/rss/MyDB";
+    //String DB_NAME = "/storage/emulated/0/AppProjects/RSS/app/src/main/java/ru/evoytenkoapps/rss/MyDB";
     String path = "MyDB.db";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
         Bundle extras = getIntent().getExtras();
 
         if (extras != null)
@@ -45,7 +45,8 @@ public class SecondActivity extends AppCompatActivity implements AsyncResponse
             httpDT.execute(str);
         }
 
-        setContentView(R.layout.activity_second);
+
+
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view2);
         // если мы уверены, что изменения в контенте не изменят размер layout-а RecyclerView
         // передаем параметр true - это увеличивает производительность
@@ -100,8 +101,7 @@ public class SecondActivity extends AppCompatActivity implements AsyncResponse
 
         db.close();
         // создаем адаптер
-        mAdapter = new RecyclerAdapter(myDataset);
+        mAdapter = new SecondRecyclerAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 }

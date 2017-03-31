@@ -7,8 +7,10 @@ import android.util.*;
 
 class DBStore extends SQLiteOpenHelper
 {
-    private final String LOG_TAG ="RSS_BD"; 
+    private final String LOG_TAG ="RSS_BD";
 
+    // Таблица
+    static final String DATA_TABLE = "data";
 
     public DBStore(Context context, String path)
     {
@@ -20,7 +22,7 @@ class DBStore extends SQLiteOpenHelper
     {
         Log.d(LOG_TAG, "--- onCreate database ---");
         // создаем таблицу с полями
-        db.execSQL("create table mytable ("
+        db.execSQL("create table "+ DATA_TABLE +" ("
                    + "id integer primary key autoincrement," 
                    + "title text,"
                    + "description text,"

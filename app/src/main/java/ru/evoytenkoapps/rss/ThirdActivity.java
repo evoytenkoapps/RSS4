@@ -12,7 +12,7 @@ public class ThirdActivity extends AppCompatActivity
     private String LOG_TAG = "RSS_BD";
     final static String EXTRA_NAME = "Description";
 
-    //String path = "/storage/emulated/0/AppProjects/RSS/app/src/main/java/ru/evoytenkoapps/rss/MyDB";
+    //String DB_NAME = "/storage/emulated/0/AppProjects/RSS/app/src/main/java/ru/evoytenkoapps/rss/MyDB";
     String path = "MyDB.db";
 
     @Override

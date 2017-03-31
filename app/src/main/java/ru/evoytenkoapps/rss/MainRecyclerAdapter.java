@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
  * Created by evv on 21.03.2017.
  */
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>
+public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>
 {
     private List<String> mDataset = new ArrayList<String>();
     private Context context;
@@ -36,14 +35,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     // Конструктор
-    public RecyclerAdapter(List list)
+    public MainRecyclerAdapter(List list)
     {
         mDataset = list;
     }
 
     // Создает новые views (вызывается layout manager-ом)
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public MainRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
@@ -62,7 +61,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.mTextView.setText(mDataset.get(position).toString());
         final int p = position;
 
-        // Вызов WebActivity
+        // Вызов SecondActivity
         holder.mTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
