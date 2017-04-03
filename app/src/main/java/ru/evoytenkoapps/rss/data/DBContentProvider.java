@@ -1,10 +1,11 @@
-package ru.evoytenkoapps.rss;
+package ru.evoytenkoapps.rss.data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by evv on 31.03.2017.
@@ -17,7 +18,7 @@ public class DBContentProvider extends ContentProvider {
 
     // // Константы для БД
     // БД
-    static final String DB_NAME = "MyDB.db";
+    static final String DB_NAME = "RSSDB.db";
     static final int DB_VERSION = 1;
 
     // Таблица
@@ -46,8 +47,7 @@ public class DBContentProvider extends ContentProvider {
     static final String CONTACT_PATH = "contacts";
 
     // Общий Uri
-    public static final Uri CONTACT_CONTENT_URI = Uri.parse("content://"
-            + AUTHORITY + "/" + CONTACT_PATH);
+    public static final Uri CONTACT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + CONTACT_PATH);
 
     // Типы данных
     // набор строк
@@ -65,10 +65,13 @@ public class DBContentProvider extends ContentProvider {
     // Uri с указанным ID
     static final int URI_CONTACTS_ID = 2;
 
+DBHelper dbHelper;
 
     @Override
     public boolean onCreate() {
-        return false;
+        Log.d(LOG_TAG, "Create DB from Content Provider");
+        dbHelper = new DBHelper( getContext(), DB_NAME);
+        return true;
     }
 
     @Nullable

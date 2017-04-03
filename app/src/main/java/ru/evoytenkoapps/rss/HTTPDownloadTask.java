@@ -10,6 +10,8 @@ import java.net.*;
 import java.util.*;
 import org.xmlpull.v1.*;
 
+import ru.evoytenkoapps.rss.data.DBHelper;
+
 public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 {
     // Нужно для возвоащения результата
@@ -139,7 +141,7 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
             List<String> tmplst = new ArrayList<String>();
             tmplst.addAll(data);
             // создаем объект для создания и управления версиями БД
-            DBStore  dbHelper = new DBStore(MainActivity.sMainContext, DB_NAME);
+            DBHelper dbHelper = new DBHelper(MainActivity.sMainContext, DB_NAME);
             // создаем объект для данных
             ContentValues cv = new ContentValues();
 //

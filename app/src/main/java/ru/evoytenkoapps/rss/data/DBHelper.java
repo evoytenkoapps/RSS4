@@ -1,22 +1,24 @@
-package ru.evoytenkoapps.rss;
+package ru.evoytenkoapps.rss.data;
 import android.content.*;
 import android.database.sqlite.*;
 import android.util.*;
 
 
+// Класс который создает БД
 
-class DBStore extends SQLiteOpenHelper
+public class DBHelper extends SQLiteOpenHelper
 {
     private final String LOG_TAG ="RSS_BD";
-
     // Таблица
     static final String DATA_TABLE = "data";
 
-    public DBStore(Context context, String path)
+    public DBHelper(Context context, String path)
     {
-        // конструктор суперкласса
         super(context, path, null, 1);
     }
+
+
+
     @Override
     public void onCreate(SQLiteDatabase db)
     {
