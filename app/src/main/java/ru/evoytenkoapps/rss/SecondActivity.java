@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
-import ru.evoytenkoapps.rss.data.DBHelper;
+import ru.evoytenkoapps.rss.data.DBCreater;
 
 
 public class SecondActivity extends AppCompatActivity implements AsyncResponse
@@ -69,9 +69,9 @@ public class SecondActivity extends AppCompatActivity implements AsyncResponse
 
         // Берем данные из БД
         Log.d(LOG_TAG, "--- Rows in mytable: ---");
-        DBHelper dbHelper = new DBHelper(MainActivity.sMainContext, path);
+        DBCreater dbCreater = new DBCreater(MainActivity.sMainContext, path);
         // подключаемся к БД
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbCreater.getWritableDatabase();
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
         Cursor c = db.query("mytable", null, null, null, null, null, null);
         // ставим позицию курсора на первую строку выборки

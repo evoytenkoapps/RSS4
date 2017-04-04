@@ -10,7 +10,7 @@ import java.net.*;
 import java.util.*;
 import org.xmlpull.v1.*;
 
-import ru.evoytenkoapps.rss.data.DBHelper;
+import ru.evoytenkoapps.rss.data.DBCreater;
 
 public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 {
@@ -141,7 +141,7 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
             List<String> tmplst = new ArrayList<String>();
             tmplst.addAll(data);
             // создаем объект для создания и управления версиями БД
-            DBHelper dbHelper = new DBHelper(MainActivity.sMainContext, DB_NAME);
+            DBCreater dbCreater = new DBCreater(MainActivity.sMainContext, DB_NAME);
             // создаем объект для данных
             ContentValues cv = new ContentValues();
 //
@@ -151,7 +151,7 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 
 
             // подключаемся к БД
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = dbCreater.getWritableDatabase();
             Log.d(LOG_TAG, "--- Insert in mytable: ---");
             // подготовим данные для вставки в виде пар: наименование столбца - значение
             for (int i =0; i < tmplst.size(); i = i + 3)
@@ -175,7 +175,7 @@ public class HTTPDownloadTask extends AsyncTask<  String, Void, List>
 //                    break;
 
             // закрываем подключение к БД
-            dbHelper.close();
+            dbCreater.close();
 
             delegate.processFinish(tmplst);
         }
