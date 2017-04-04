@@ -16,16 +16,15 @@ import android.util.Log;
 public class DBContentProvider extends ContentProvider {
     private final String LOG_TAG ="RSS_BD";
 
-    
-
     // Скрипт создания таблицы
     static final String DB_CREATE =
             "create table "
             + DBContract.RSSDB.DB_NAME + "("
-            + DBContract.RSSDB.DATA_ID + " integer primary key autoincrement, "
-            + DBContract.RSSDB. + " text, "
-            + DATA_DESCRIPTION + " text,"
-            + DATA_LINK + " text" + ");";
+            + DBContract.RSSDB.TableData.TABLE_NAME + " integer primary key autoincrement, "
+            + DBContract.RSSDB.TableData.ID + " text, "
+            + DBContract.RSSDB.TableData.TITLE+ " text,"
+            + DBContract.RSSDB.TableData.DESCRIPTION + " text,"
+            + DBContract.RSSDB.TableData.LINK +" text" + ");";
 
     // // Uri
     // authority
@@ -58,7 +57,7 @@ DBHelper dbHelper;
     @Override
     public boolean onCreate() {
         Log.d(LOG_TAG, "Create DB from Content Provider");
-        dbHelper = new DBHelper( getContext(), DB_NAME);
+        dbHelper = new DBHelper( getContext(), DBContract.RSSDB.DB_NAME);
         return true;
     }
 
