@@ -16,26 +16,14 @@ import android.util.Log;
 public class DBContentProvider extends ContentProvider {
     private final String LOG_TAG ="RSS_BD";
 
-    // // Константы для БД
-    // БД
-    static final String DB_NAME = "RSSDB.db";
-    static final int DB_VERSION = 1;
-
-    // Таблица
-    static final String DATA_TABLE = "data";
-
-    // Поля
-    static final String DATA_ID = "id";
-    static final String DATA_TITLE = "title";
-    static final String DATA_DESCRIPTION = "description";
-    static final String DATA_LINK = "link";
+    
 
     // Скрипт создания таблицы
     static final String DB_CREATE =
             "create table "
-            + DATA_TABLE + "("
-            + DATA_ID + " integer primary key autoincrement, "
-            + DATA_TITLE + " text, "
+            + DBContract.RSSDB.DB_NAME + "("
+            + DBContract.RSSDB.DATA_ID + " integer primary key autoincrement, "
+            + DBContract.RSSDB. + " text, "
             + DATA_DESCRIPTION + " text,"
             + DATA_LINK + " text" + ");";
 
