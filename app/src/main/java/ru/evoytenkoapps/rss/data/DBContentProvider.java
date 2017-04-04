@@ -9,33 +9,25 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-/**
- * Created by evv on 31.03.2017.
- * Пытаемся мегрировать на gtihub
- * 2 попытка
- */
+
 
 public class DBContentProvider extends ContentProvider {
     private final String LOG_TAG = "RSS_BD";
 
-    // // Uri
-    // authority
-    static final String AUTHORITY = "ru.evoytenkoapps.rss";
+    // Uri
+    static final String AUTHORITY = "ru.evoytenkoapps.providers.rss";
 
-    // DB_NAME
-    static final String CONTACT_PATH = "contacts";
+    // Path
+    static final String PATH = DBContract.DBRSS.DATA.NAME_TABLE;
 
     // Общий Uri
-    public static final Uri CONTACT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + CONTACT_PATH);
+    public static final Uri CONTACT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + PATH);
 
-    // Типы данных
+    // MIME
     // набор строк
-    static final String CONTACT_CONTENT_TYPE = "vnd.android.cursor.dir/vnd."
-            + AUTHORITY + "." + CONTACT_PATH;
-
+    static final String CONTACT_CONTENT_TYPE = "vnd.android.cursor.dir/vnd." + AUTHORITY + "." + PATH;
     // одна строка
-    static final String CONTACT_CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd."
-            + AUTHORITY + "." + CONTACT_PATH;
+    static final String CONTACT_CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd." + AUTHORITY + "." + PATH;
 
 
     //// UriMatcher
@@ -48,8 +40,8 @@ public class DBContentProvider extends ContentProvider {
     private static final UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(AUTHORITY, CONTACT_PATH, URI_CONTACTS);
-        uriMatcher.addURI(AUTHORITY, CONTACT_PATH + "/#", URI_CONTACTS_ID);
+        uriMatcher.addURI(AUTHORITY, PATH, URI_CONTACTS);
+        uriMatcher.addURI(AUTHORITY, PATH + "/#", URI_CONTACTS_ID);
     }
 
     DBCreater dbCreater;

@@ -10,11 +10,12 @@ public class DBContract
         static final String DB_NAME = "DBRSS.db";
         static final int DB_VERSION = 1;
 
+
         // Класс таблицы DATA в которой будут все данные
         public static final class DATA {
 
             // Название таблицы
-            static final String TABLE_NAME = "DATA";
+            static final String NAME_TABLE = "DATA";
 
             // Поля
             static final String ID = "_ID";
@@ -26,7 +27,7 @@ public class DBContract
             static final String DB_CREATE =
                 "create table "
                 + DB_NAME + "("
-                + TABLE_NAME + " integer primary key autoincrement,"
+                + NAME_TABLE + " integer primary key autoincrement,"
                 + ID + " text,"
                 + TITLE + " text,"
                 + DESCRIPTION + " text,"

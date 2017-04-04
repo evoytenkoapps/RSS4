@@ -4,7 +4,7 @@ import android.database.sqlite.*;
 import android.util.*;
 
 
-// Класс который создает БД
+// Класс который создает БД и тиблицу
 public class DBCreater extends SQLiteOpenHelper
 {
     private final String LOG_TAG ="RSS_BD";
