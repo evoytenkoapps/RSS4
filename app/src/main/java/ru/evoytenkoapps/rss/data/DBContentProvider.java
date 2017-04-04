@@ -23,25 +23,25 @@ public class DBContentProvider extends ContentProvider {
     // Общий Uri
     public static final Uri CONTACT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + PATH);
 
-    // MIME
-    // набор строк
+    // Общий MIME
+    // Набор строк
     static final String CONTACT_CONTENT_TYPE = "vnd.android.cursor.dir/vnd." + AUTHORITY + "." + PATH;
-    // одна строка
+    // Одна строка
     static final String CONTACT_CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd." + AUTHORITY + "." + PATH;
 
 
     //// UriMatcher
     // общий Uri
-    static final int URI_CONTACTS = 1;
+    static final int CONSTANT1 = 1;
     // Uri с указанным ID
-    static final int URI_CONTACTS_ID = 2;
+    static final int CONSTANT2 = 2;
 
     // описание и создание UriMatcher
     private static final UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(AUTHORITY, PATH, URI_CONTACTS);
-        uriMatcher.addURI(AUTHORITY, PATH + "/#", URI_CONTACTS_ID);
+        uriMatcher.addURI(AUTHORITY, PATH, CONSTANT1);
+        uriMatcher.addURI(AUTHORITY, PATH + "/#", CONSTANT2);
     }
 
     DBCreater dbCreater;
@@ -58,25 +58,21 @@ public class DBContentProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
+
+
             Log.d(LOG_TAG, "query, " + uri.toString());
             // проверяем Uri
             switch (uriMatcher.match(uri)) {
-                case URI_CONTACTS: // общий Uri
-                    Log.d(LOG_TAG, "URI_CONTACTS");
+                case CONSTANT1: // общий Uri
+                    Log.d(LOG_TAG, "CONSTANT1");
                     // если сортировка не указана, ставим свою - по имени
                     if (TextUtils.isEmpty(sortOrder)) {
                         sortOrder = CONTACT_NAME + " ASC";
                     }
                     break;
-                case URI_CONTACTS_ID: // Uri с ID
+                case CONSTANT2: // Uri с ID
                     String id = uri.getLastPathSegment();
-                    Log.d(LOG_TAG, "URI_CONTACTS_ID, " + id);
-                    // добавляем ID к условию выборки
-                    if (TextUtils.isEmpty(selection)) {
-                        selection = CONTACT_ID + " = " + id;
-                    } else {
-                        selection = selection + " AND " + CONTACT_ID + " = " + id;
-                    }
+                    Log.d(LOG_TAG, "CONSTANT2, " + id);
                     break;
                 default:
                     throw new IllegalArgumentException("Wrong URI: " + uri);
