@@ -20,7 +20,7 @@ public class DBCreater extends SQLiteOpenHelper
     {
         Log.d(LOG_TAG, "--- onCreate database ---");
         // Cздаем таблицу
-        db.execSQL(DBContract.DBRSS.DATA.DB_CREATE);
+        db.execSQL(DBContract.DBRSS.DATA.TABLE_CREATE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)

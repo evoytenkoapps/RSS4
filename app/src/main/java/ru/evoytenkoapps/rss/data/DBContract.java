@@ -4,16 +4,16 @@ public class DBContract
 
 {
     // Класс базы
-    public static final class DBRSS {
+    public static final class DBRSS
+    {
         // Константы для БД
         // БД
         static final String DB_NAME = "DBRSS.db";
         static final int DB_VERSION = 1;
 
-
         // Класс таблицы DATA в которой будут все данные
-        public static final class DATA {
-
+        public static final class DATA
+        {
             // Название таблицы
             static final String NAME_TABLE = "DATA";
 
@@ -24,14 +24,13 @@ public class DBContract
             static final String LINK = "LINK";
 
             // Строка для создания таблицы
-            static final String DB_CREATE =
-                "create table "
-                + DB_NAME + "("
-                + NAME_TABLE + " integer primary key autoincrement,"
-                + ID + " text,"
-                + TITLE + " text,"
-                + DESCRIPTION + " text,"
-                + LINK + " text" + ");";
+            static final String TABLE_CREATE =
+                    "create table "
+                    + NAME_TABLE
+                    + "(" + ID + " integer primary key autoincrement, "
+                    + TITLE + " text, "
+                    + DESCRIPTION + " text, "
+                    + LINK + " text" + ");";
 
         }
     }
